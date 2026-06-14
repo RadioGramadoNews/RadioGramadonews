@@ -458,52 +458,31 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; colo
   max-width:520px;
 }
 
-/* Banner premium destaque (no lugar do disco) */
+/* Banner premium destaque (no lugar do disco) - QUADRADO */
 .hero-banner-premium {
   margin-top:auto;
-  background:linear-gradient(135deg, rgba(30,122,61,0.08), rgba(245,184,0,0.04));
-  border:1px solid var(--border);
-  border-radius:20px;
-  padding:6px;
-  position:relative;
+  border-radius:16px;
   overflow:hidden;
   display:block;
   transition:all 0.4s;
-}
-.hero-banner-premium::before {
-  content:''; position:absolute;
-  top:0; left:0; right:0; height:2px;
-  background:linear-gradient(90deg, var(--green), var(--gold), var(--green));
+  position:relative;
+  width:100%;
+  max-width:420px;
+  align-self:center;
+  border:1px solid var(--border);
 }
 .hero-banner-premium:hover {
   border-color:var(--gold);
   transform:translateY(-4px);
   box-shadow:0 20px 50px rgba(0,0,0,0.5);
 }
-.hero-banner-premium-inner {
-  border-radius:14px;
-  overflow:hidden;
-  position:relative;
-}
 .hero-banner-premium img {
-  width:100%; aspect-ratio:1024/150;
+  width:100%;
+  aspect-ratio:1/1;
   object-fit:cover; display:block;
   transition:transform 0.5s;
 }
 .hero-banner-premium:hover img { transform:scale(1.03); }
-.hero-banner-premium-tag {
-  position:absolute;
-  top:14px; right:14px;
-  background:rgba(0,0,0,0.7);
-  backdrop-filter:blur(10px);
-  color:rgba(255,255,255,0.7);
-  font-size:9px;
-  letter-spacing:2px;
-  padding:4px 10px; border-radius:4px;
-  text-transform:uppercase;
-  z-index:2;
-  font-weight:600;
-}
 
 /* Lado direito: player controls */
 .player-controls-stage {
@@ -916,16 +895,16 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; colo
 }
 .news-card-content {
   position:absolute; bottom:0; left:0; right:0;
-  padding:24px; z-index:2;
+  padding:18px; z-index:2;
 }
 .news-cat {
   display:inline-block;
   background:var(--gold); color:#000;
-  font-size:10px; font-weight:800;
+  font-size:9px; font-weight:800;
   letter-spacing:2px;
-  padding:5px 12px; border-radius:4px;
+  padding:4px 10px; border-radius:4px;
   text-transform:uppercase;
-  margin-bottom:12px;
+  margin-bottom:8px;
 }
 .news-cat.cat-gramado { background:var(--green); color:#fff; }
 .news-cat.cat-canela { background:#3b82f6; color:#fff; }
@@ -936,9 +915,9 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; colo
 .news-cat.cat-camara { background:#0891b2; color:#fff; }
 .news-card-title {
   font-family:'Bebas Neue', sans-serif;
-  font-size:22px; line-height:1.1;
+  font-size:17px; line-height:1.1;
   letter-spacing:0.5px;
-  margin-bottom:8px;
+  margin-bottom:6px;
   transition:color 0.3s;
 }
 .news-card:hover .news-card-title { color:var(--gold); }
@@ -950,13 +929,13 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; colo
 }
 .news-card-meta span { display:flex; align-items:center; gap:5px; }
 
-.news-card.size-hero { grid-column:span 8; grid-row:span 2; min-height:520px; }
-.news-card.size-hero .news-card-title { font-size:38px; line-height:1; }
-.news-card.size-hero .news-card-content { padding:32px; }
-.news-card.size-med { grid-column:span 4; min-height:248px; }
-.news-card.size-sm { grid-column:span 4; min-height:248px; }
-.news-card.size-wide { grid-column:span 6; min-height:260px; }
-.news-card.size-wide .news-card-title { font-size:26px; }
+.news-card.size-hero { grid-column:span 8; grid-row:span 2; min-height:360px; }
+.news-card.size-hero .news-card-title { font-size:28px; line-height:1; }
+.news-card.size-hero .news-card-content { padding:24px; }
+.news-card.size-med { grid-column:span 4; min-height:170px; }
+.news-card.size-sm { grid-column:span 4; min-height:170px; }
+.news-card.size-wide { grid-column:span 6; min-height:180px; }
+.news-card.size-wide .news-card-title { font-size:20px; }
 
 .news-card.ad-card {
   background:var(--bg-2);
@@ -1396,8 +1375,9 @@ footer {
   .hero-inner { grid-template-columns:1fr; gap:40px; }
   .hero-banner-premium { max-width:600px; margin:0 auto; width:100%; }
   .news-mosaic { grid-template-columns:repeat(6, 1fr); }
-  .news-card.size-hero { grid-column:span 6; min-height:380px; }
-  .news-card.size-med, .news-card.size-sm, .news-card.size-wide { grid-column:span 3; min-height:230px; }
+  .news-card.size-hero { grid-column:span 6; min-height:280px; }
+  .news-card.size-med, .news-card.size-sm, .news-card.size-wide { grid-column:span 3; min-height:160px; }
+  .news-card.size-hero .news-card-title { font-size:22px; }
   .section-title-main { font-size:42px; }
   .gerson-card { grid-template-columns:200px 1fr; }
   .gerson-title { font-size:32px; }
@@ -1433,9 +1413,9 @@ footer {
   .container, .ads-section, footer, .banner-solo, .gerson-section, .supporters-section { padding-left:16px; padding-right:16px; }
   .news-mosaic { grid-template-columns:1fr; }
   .news-card.size-hero, .news-card.size-med, .news-card.size-sm, .news-card.size-wide {
-    grid-column:span 1; min-height:260px;
+    grid-column:span 1; min-height:180px;
   }
-  .news-card.size-hero .news-card-title { font-size:26px; }
+  .news-card.size-hero .news-card-title { font-size:20px; }
   .section-title-main { font-size:32px; }
   .gerson-card { grid-template-columns:1fr; }
   .gerson-photo-wrap { aspect-ratio:16/9; }
@@ -1547,12 +1527,9 @@ footer {
         A Voz da Serra Gaúcha. A Rádio que conecta você com o melhor da música e informações.
       </p>
 
-      <!-- Banner premium no lugar do disco -->
-      <a href="#" class="hero-banner-premium" id="heroBannerPremium" target="_blank">
-        <div class="hero-banner-premium-inner">
-          <span class="hero-banner-premium-tag">Patrocinador Master</span>
-          <img id="heroBannerImg" src="" alt="Anunciante">
-        </div>
+      <!-- Banner premium no lugar do disco (quadrado) -->
+      <a href="#" class="hero-banner-premium" id="heroBannerPremium" target="_blank" rel="noopener">
+        <img id="heroBannerImg" src="" alt="">
       </a>
     </div>
 
@@ -1685,10 +1662,9 @@ footer {
   </div>
 </section>
 
-<!-- APOIADORES -->
+<!-- APOIADORES (sem label) -->
 <section class="supporters-section">
   <div class="supporters-inner">
-    <div class="supporters-label">Apoiadores</div>
     <div class="supporters-grid" id="supportersGrid"></div>
   </div>
 </section>
@@ -1915,7 +1891,7 @@ footer {
                   <label>Posição *</label>
                   <select id="bannerPosition">
                     <option value="slideshow">🎬 Slideshow topo (rotativo) — 1024×150</option>
-                    <option value="hero-premium">🌟 Hero Premium (acima do player) — 1024×150</option>
+                    <option value="hero-premium">🌟 Hero (no lugar do disco) — 400×400 quadrado</option>
                     <option value="solo">📐 Banner solo (horizontal isolado) — 1024×150</option>
                     <option value="news-inline">📰 Inline nas notícias (300×300)</option>
                     <option value="supporters">⬜ Apoiador (rodapé) — 300×300</option>
@@ -2031,8 +2007,8 @@ const DEFAULT_DATA = {
   banners: [
     {id:1, name:"Tricofest Slideshow", position:"slideshow", image:IMGS.tricofest_topo, link:"https://www.tricofest.com.br/", active:1, order:1},
     {id:2, name:"Sicredi Slideshow", position:"slideshow", image:IMGS.sicredi_horizontal, link:"https://sicredipioneira.com.br", active:1, order:2},
-    // Banner Premium do Hero (no lugar do disco)
-    {id:3, name:"Tricofest Hero Premium", position:"hero-premium", image:IMGS.tricofest_topo, link:"https://www.tricofest.com.br/", active:1, order:1},
+    // Banner Premium do Hero (no lugar do disco - QUADRADO)
+    {id:3, name:"Tricofest Hero", position:"hero-premium", image:IMGS.tricofest_quadrado, link:"https://www.tricofest.com.br/", active:1, order:1},
     // Inline notícias
     {id:4, name:"Tricofest Quadrado", position:"news-inline", image:IMGS.tricofest_quadrado, link:"https://www.tricofest.com.br/", active:1, order:1},
     {id:5, name:"Connection Terroirs", position:"news-inline", image:IMGS.connection, link:"https://www.connectionexperience.com.br/", active:1, order:2},
@@ -2054,12 +2030,12 @@ const DEFAULT_DATA = {
 
 function loadData() {
   try {
-    const s = localStorage.getItem('radioGramadoData_v6');
+    const s = localStorage.getItem('radioGramadoData_v7');
     if (s) return JSON.parse(s);
   } catch {}
   return DEFAULT_DATA;
 }
-function saveData() { localStorage.setItem('radioGramadoData_v6', JSON.stringify(DATA)); }
+function saveData() { localStorage.setItem('radioGramadoData_v7', JSON.stringify(DATA)); }
 let DATA = loadData();
 if (!DATA.categories) DATA.categories = DEFAULT_DATA.categories;
 
@@ -2312,7 +2288,6 @@ function renderNews() {
       const ad = inlineAds[adIdx];
       html += `
         <a href="${ad.link}" target="_blank" rel="noopener" class="news-card ad-card size-med">
-          <span class="ad-label">Publicidade</span>
           <img src="${ad.image}" alt="${ad.name}" loading="lazy">
         </a>
       `;
