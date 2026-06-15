@@ -305,14 +305,13 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; colo
 
 /* Banner premium destaque (no lugar do disco) - QUADRADO */
 .hero-banner-premium {
-  margin-top:auto;
   border-radius:16px;
   overflow:hidden;
   display:block;
   transition:all 0.4s;
   position:relative;
   width:100%;
-  max-width:420px;
+  max-width:380px;
   align-self:center;
   border:1px solid var(--border);
 }
@@ -328,6 +327,41 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; colo
   transition:transform 0.5s;
 }
 .hero-banner-premium:hover img { transform:scale(1.03); }
+
+/* Banner extra do lado ESQUERDO embaixo do Tricofest - preenche espaço vago */
+.hero-left-extra {
+  display:block;
+  flex:1;
+  min-height:140px;
+  border-radius:16px;
+  overflow:hidden;
+  background:var(--bg-2);
+  border:1px solid var(--border);
+  transition:all 0.4s;
+  position:relative;
+  margin-top:auto;
+}
+.hero-left-extra::before {
+  content:'';
+  position:absolute;
+  top:0; left:0; right:0; height:2px;
+  background:linear-gradient(90deg, var(--gold), var(--green));
+  z-index:2;
+}
+.hero-left-extra:hover {
+  border-color:var(--gold);
+  transform:translateY(-3px);
+  box-shadow:0 16px 40px rgba(0,0,0,0.5);
+}
+.hero-left-extra img {
+  width:100%;
+  height:100%;
+  min-height:140px;
+  object-fit:cover;
+  display:block;
+  transition:transform 0.5s;
+}
+.hero-left-extra:hover img { transform:scale(1.05); }
 
 /* Lado direito: player controls */
 .player-controls-stage {
@@ -1651,6 +1685,11 @@ footer {
       <a href="#" class="hero-banner-premium" id="heroBannerPremium" target="_blank" rel="noopener">
         <img id="heroBannerImg" src="" alt="">
       </a>
+
+      <!-- Banner extra esquerdo (preenche espaço sobrando) -->
+      <a href="#" target="_blank" rel="noopener" id="heroLeftExtra" class="hero-left-extra" style="display:none;">
+        <img id="heroLeftExtraImg" src="" alt="">
+      </a>
     </div>
 
     <div class="hero-right">
@@ -2046,6 +2085,7 @@ footer {
                     <option value="slideshow">🎬 Slideshow topo (rotativo) — 1024×150</option>
                     <option value="hero-premium">🌟 Hero (no lugar do disco) — 400×400 quadrado</option>
                     <option value="player-bottom">🎵 Embaixo do player — 1024×150 horizontal</option>
+                    <option value="hero-left-extra">⬅️ Lateral esquerda (embaixo do banner premium)</option>
                     <option value="hero-right-extra">📺 Lateral direita do player — qualquer formato</option>
                     <option value="solo">📐 Banner solo (horizontal isolado) — 1024×150</option>
                     <option value="news-inline">📰 Inline nas notícias (300×300)</option>
@@ -2168,6 +2208,8 @@ const DEFAULT_DATA = {
     {id:10, name:"Sicredi Player", position:"player-bottom", image:IMGS.sicredi_horizontal, link:"https://sicredipioneira.com.br", active:1, order:1},
     // Banner extra na coluna direita do hero (preenche espaço embaixo do player)
     {id:11, name:"Câmara de Gramado Extra", position:"hero-right-extra", image:IMGS.camara_300x250, link:"https://www.instagram.com/camaragramado/", active:1, order:1},
+    // Banner extra na coluna esquerda do hero (preenche espaço embaixo do Tricofest)
+    {id:12, name:"Fermenta Extra", position:"hero-left-extra", image:IMGS.fermenta, link:"https://www.instagram.com/fermen.ta/", active:1, order:1},
     // Inline notícias
     {id:4, name:"Tricofest Quadrado", position:"news-inline", image:IMGS.tricofest_quadrado, link:"https://www.tricofest.com.br/", active:1, order:1},
     {id:5, name:"Connection Terroirs", position:"news-inline", image:IMGS.connection, link:"https://www.connectionexperience.com.br/", active:1, order:2},
@@ -2189,16 +2231,16 @@ const DEFAULT_DATA = {
 
 function loadData() {
   try {
-    const s = localStorage.getItem('radioGramadoData_v12');
+    const s = localStorage.getItem('radioGramadoData_v13');
     if (s) return JSON.parse(s);
   } catch {}
-  // Limpa versões antigas pra não ocupar espaço
-  ['radioGramadoData_v4','radioGramadoData_v5','radioGramadoData_v6','radioGramadoData_v7','radioGramadoData_v8','radioGramadoData_v9','radioGramadoData_v10','radioGramadoData_v11'].forEach(k => {
+  // Limpa versões antigas
+  ['radioGramadoData_v4','radioGramadoData_v5','radioGramadoData_v6','radioGramadoData_v7','radioGramadoData_v8','radioGramadoData_v9','radioGramadoData_v10','radioGramadoData_v11','radioGramadoData_v12'].forEach(k => {
     try { localStorage.removeItem(k); } catch {}
   });
   return DEFAULT_DATA;
 }
-function saveData() { localStorage.setItem('radioGramadoData_v12', JSON.stringify(DATA)); }
+function saveData() { localStorage.setItem('radioGramadoData_v13', JSON.stringify(DATA)); }
 let DATA = loadData();
 if (!DATA.categories) DATA.categories = DEFAULT_DATA.categories;
 
@@ -2302,6 +2344,23 @@ function renderHeroRightExtra() {
   const list = DATA.banners.filter(b => b.position === 'hero-right-extra' && b.active == 1).sort((a,b) => a.order - b.order);
   const wrap = document.getElementById('heroRightExtra');
   const img = document.getElementById('heroRightExtraImg');
+  if (!wrap || !img) return;
+  if (!list.length) {
+    wrap.style.display = 'none';
+    return;
+  }
+  wrap.style.display = 'block';
+  const b = list[0];
+  wrap.href = b.link;
+  img.src = b.image;
+  img.alt = b.name;
+}
+
+// HERO LEFT EXTRA - banner extra embaixo do banner Tricofest (lado esquerdo)
+function renderHeroLeftExtra() {
+  const list = DATA.banners.filter(b => b.position === 'hero-left-extra' && b.active == 1).sort((a,b) => a.order - b.order);
+  const wrap = document.getElementById('heroLeftExtra');
+  const img = document.getElementById('heroLeftExtraImg');
   if (!wrap || !img) return;
   if (!list.length) {
     wrap.style.display = 'none';
@@ -2676,6 +2735,7 @@ function renderBannerList() {
     slideshow:'🎬 Slideshow topo',
     'hero-premium':'🌟 Hero Premium',
     'player-bottom':'🎵 Embaixo do player',
+    'hero-left-extra':'⬅️ Lateral esquerda',
     'hero-right-extra':'📺 Lateral direita',
     solo:'📐 Banner solo',
     'news-inline':'📰 Inline notícias',
@@ -2740,13 +2800,13 @@ function saveBanner() {
     showToast('Atualizado!', 'success');
   } else { data.id = Date.now(); DATA.banners.push(data); showToast('Adicionado!', 'success'); }
   saveData(); hideBannerForm();
-  renderBannerList(); renderSlideshow(); renderHeroPremium(); renderPlayerBanner(); renderHeroRightExtra(); renderSupporters(); renderNews(); renderAdminAll();
+  renderBannerList(); renderSlideshow(); renderHeroPremium(); renderPlayerBanner(); renderHeroRightExtra(); renderHeroLeftExtra(); renderSupporters(); renderNews(); renderAdminAll();
 }
 
 function deleteBanner(id) {
   if (!confirm('Excluir este banner?')) return;
   DATA.banners = DATA.banners.filter(x => x.id !== id);
-  saveData(); renderBannerList(); renderSlideshow(); renderHeroPremium(); renderPlayerBanner(); renderHeroRightExtra(); renderSupporters(); renderNews(); renderAdminAll();
+  saveData(); renderBannerList(); renderSlideshow(); renderHeroPremium(); renderPlayerBanner(); renderHeroRightExtra(); renderHeroLeftExtra(); renderSupporters(); renderNews(); renderAdminAll();
   showToast('Excluído', 'success');
 }
 
@@ -2914,7 +2974,7 @@ function loadTV() {
 
 // INIT
 renderSlideshow();
-renderHeroPremium(); renderPlayerBanner(); renderHeroRightExtra();
+renderHeroPremium(); renderPlayerBanner(); renderHeroRightExtra(); renderHeroLeftExtra();
 renderTicker();
 renderNewsFilters();
 renderNews();
