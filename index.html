@@ -219,7 +219,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; colo
   display:grid;
   grid-template-columns:1.1fr 1fr;
   gap:50px;
-  align-items:stretch;
+  align-items:start;
 }
 
 /* Lado esquerdo: texto + banner premium */
@@ -1619,7 +1619,7 @@ footer {
       <div class="share-row">
         <a href="https://wa.me/5554999853657" target="_blank" class="share-btn"><i class="fab fa-whatsapp"></i></a>
         <a href="https://www.facebook.com/profile.php?id=61552205840843" target="_blank" class="share-btn"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.instagram.com/radio.misturanews/" target="_blank" class="share-btn"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.instagram.com/radiogramadonews/" target="_blank" class="share-btn"><i class="fab fa-instagram"></i></a>
         <button class="share-btn" onclick="shareNow()"><i class="fas fa-share-alt"></i></button>
       </div>
     </div>
@@ -1687,11 +1687,6 @@ footer {
           <div class="tv-meta-num">FREE</div>
           <div class="tv-meta-label">Grátis</div>
         </div>
-      </div>
-
-      <div class="tv-programs">
-        <h4><i class="far fa-clock"></i> Programação de Hoje</h4>
-        <ul id="tvProgramsList"></ul>
       </div>
     </div>
   </div>
@@ -1806,7 +1801,7 @@ footer {
       <p>Música de qualidade e informação com credibilidade. A Voz da Serra Gaúcha, transmitindo 24 horas por dia para todo o Brasil e o mundo.</p>
       <div class="footer-socials">
         <a href="https://www.facebook.com/profile.php?id=61552205840843" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.instagram.com/radio.misturanews/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.instagram.com/radiogramadonews/" target="_blank"><i class="fab fa-instagram"></i></a>
         <a href="https://wa.me/5554999853657" target="_blank"><i class="fab fa-whatsapp"></i></a>
       </div>
     </div>
@@ -2066,7 +2061,7 @@ footer {
               </div>
               <div class="form-group">
                 <label>Instagram</label>
-                <input type="text" id="cfgInstagram" value="https://www.instagram.com/radio.misturanews/">
+                <input type="text" id="cfgInstagram" value="https://www.instagram.com/radiogramadonews/">
               </div>
             </div>
             <button class="btn btn-success" onclick="saveSettings()"><i class="fas fa-save"></i> Salvar</button>
@@ -2127,7 +2122,7 @@ const DEFAULT_DATA = {
     stream: "https://stream01.ouveai.com.br:1092/stream",
     whatsapp: "5554999853657",
     facebook: "https://www.facebook.com/profile.php?id=61552205840843",
-    instagram: "https://www.instagram.com/radio.misturanews/",
+    instagram: "https://www.instagram.com/radiogramadonews/",
     address: "Rua F. G. Bier, 1185 Sala 01 – Bairro Planalto, Gramado – RS – CEP 95.675-158"
   },
   auth: { user: "admin", pass: "gramado2026" }
