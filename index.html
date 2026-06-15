@@ -219,7 +219,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; colo
   display:grid;
   grid-template-columns:1.1fr 1fr;
   gap:50px;
-  align-items:start;
+  align-items:stretch;
 }
 
 /* Lado esquerdo: texto + banner premium */
@@ -227,6 +227,46 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; colo
   display:flex; flex-direction:column;
   gap:24px;
 }
+
+/* Lado direito: player + banner extra (preenche altura) */
+.hero-right {
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+}
+
+.hero-right-extra {
+  display:block;
+  flex:1;
+  min-height:120px;
+  border-radius:16px;
+  overflow:hidden;
+  background:var(--bg-2);
+  border:1px solid var(--border);
+  transition:all 0.4s;
+  position:relative;
+}
+.hero-right-extra::before {
+  content:'';
+  position:absolute;
+  top:0; left:0; right:0; height:2px;
+  background:linear-gradient(90deg, var(--green), var(--gold));
+  z-index:2;
+}
+.hero-right-extra:hover {
+  border-color:var(--gold);
+  transform:translateY(-3px);
+  box-shadow:0 16px 40px rgba(0,0,0,0.5);
+}
+.hero-right-extra img {
+  width:100%;
+  height:100%;
+  min-height:120px;
+  object-fit:cover;
+  display:block;
+  transition:transform 0.5s;
+}
+.hero-right-extra:hover img { transform:scale(1.05); }
 
 .player-meta-tag {
   display:inline-flex; align-items:center; gap:10px;
@@ -297,6 +337,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; colo
   border-radius:24px;
   padding:32px;
   position:relative; overflow:hidden;
+  display:flex; flex-direction:column;
 }
 .player-controls-stage::before {
   content:''; position:absolute; top:0; left:0; right:0; height:2px;
@@ -438,23 +479,25 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; colo
 }
 .share-btn:hover { background:var(--gold); color:#000; }
 
-/* BANNER INLINE DO PLAYER (substituiu redes sociais) */
+/* BANNER INLINE DO PLAYER (substituiu redes sociais) - cresce pra preencher espaço */
 .player-banner {
-  display:block;
+  display:flex;
+  flex:1;
   margin-top:18px;
   padding-top:18px;
   border-top:1px solid var(--border);
   border-radius:0;
   overflow:hidden;
   transition:all 0.3s;
+  min-height:140px;
 }
 .player-banner img {
   width:100%;
+  flex:1;
   display:block;
   border-radius:10px;
   transition:transform 0.4s;
   object-fit:cover;
-  aspect-ratio:1024/150;
 }
 .player-banner:hover img {
   transform:scale(1.02);
@@ -1481,6 +1524,8 @@ footer {
 /* RESPONSIVE */
 @media (max-width: 1024px) {
   .hero-inner { grid-template-columns:1fr; gap:40px; }
+  .hero-right { gap:18px; }
+  .hero-right-extra { min-height:140px; max-height:240px; }
   .hero-banner-premium { max-width:600px; margin:0 auto; width:100%; }
   .news-mosaic { grid-template-columns:repeat(6, 1fr); }
   .news-card.size-hero { grid-column:span 6; min-height:280px; }
@@ -1608,7 +1653,8 @@ footer {
       </a>
     </div>
 
-    <div class="player-controls-stage">
+    <div class="hero-right">
+      <div class="player-controls-stage">
       <div class="now-playing-row">
         <div class="now-playing-tag">
           <i class="fas fa-circle"></i> Tocando agora
@@ -1644,6 +1690,12 @@ footer {
         <img id="playerBannerImg" src="" alt="">
       </a>
     </div>
+
+    <!-- Banner extra embaixo do card do player (preenche espaço vazio) -->
+    <a href="#" target="_blank" rel="noopener" id="heroRightExtra" class="hero-right-extra" style="display:none;">
+      <img id="heroRightExtraImg" src="" alt="">
+    </a>
+  </div>
   </div>
 </section>
 
@@ -1994,6 +2046,7 @@ footer {
                     <option value="slideshow">🎬 Slideshow topo (rotativo) — 1024×150</option>
                     <option value="hero-premium">🌟 Hero (no lugar do disco) — 400×400 quadrado</option>
                     <option value="player-bottom">🎵 Embaixo do player — 1024×150 horizontal</option>
+                    <option value="hero-right-extra">📺 Lateral direita do player — qualquer formato</option>
                     <option value="solo">📐 Banner solo (horizontal isolado) — 1024×150</option>
                     <option value="news-inline">📰 Inline nas notícias (300×300)</option>
                     <option value="supporters">⬜ Apoiador (rodapé) — 300×300</option>
@@ -2113,6 +2166,8 @@ const DEFAULT_DATA = {
     {id:3, name:"Tricofest Hero", position:"hero-premium", image:IMGS.tricofest_quadrado, link:"https://www.tricofest.com.br/", active:1, order:1},
     // Banner inline do PLAYER (embaixo do volume, onde tirou as redes sociais)
     {id:10, name:"Sicredi Player", position:"player-bottom", image:IMGS.sicredi_horizontal, link:"https://sicredipioneira.com.br", active:1, order:1},
+    // Banner extra na coluna direita do hero (preenche espaço embaixo do player)
+    {id:11, name:"Câmara de Gramado Extra", position:"hero-right-extra", image:IMGS.camara_300x250, link:"https://www.instagram.com/camaragramado/", active:1, order:1},
     // Inline notícias
     {id:4, name:"Tricofest Quadrado", position:"news-inline", image:IMGS.tricofest_quadrado, link:"https://www.tricofest.com.br/", active:1, order:1},
     {id:5, name:"Connection Terroirs", position:"news-inline", image:IMGS.connection, link:"https://www.connectionexperience.com.br/", active:1, order:2},
@@ -2222,6 +2277,23 @@ function renderPlayerBanner() {
   const list = DATA.banners.filter(b => b.position === 'player-bottom' && b.active == 1).sort((a,b) => a.order - b.order);
   const wrap = document.getElementById('playerBanner');
   const img = document.getElementById('playerBannerImg');
+  if (!wrap || !img) return;
+  if (!list.length) {
+    wrap.style.display = 'none';
+    return;
+  }
+  wrap.style.display = 'block';
+  const b = list[0];
+  wrap.href = b.link;
+  img.src = b.image;
+  img.alt = b.name;
+}
+
+// HERO RIGHT EXTRA - banner embaixo do card do player
+function renderHeroRightExtra() {
+  const list = DATA.banners.filter(b => b.position === 'hero-right-extra' && b.active == 1).sort((a,b) => a.order - b.order);
+  const wrap = document.getElementById('heroRightExtra');
+  const img = document.getElementById('heroRightExtraImg');
   if (!wrap || !img) return;
   if (!list.length) {
     wrap.style.display = 'none';
@@ -2596,6 +2668,7 @@ function renderBannerList() {
     slideshow:'🎬 Slideshow topo',
     'hero-premium':'🌟 Hero Premium',
     'player-bottom':'🎵 Embaixo do player',
+    'hero-right-extra':'📺 Lateral direita',
     solo:'📐 Banner solo',
     'news-inline':'📰 Inline notícias',
     supporters:'⬜ Apoiador'
@@ -2659,13 +2732,13 @@ function saveBanner() {
     showToast('Atualizado!', 'success');
   } else { data.id = Date.now(); DATA.banners.push(data); showToast('Adicionado!', 'success'); }
   saveData(); hideBannerForm();
-  renderBannerList(); renderSlideshow(); renderHeroPremium(); renderPlayerBanner(); renderSupporters(); renderNews(); renderAdminAll();
+  renderBannerList(); renderSlideshow(); renderHeroPremium(); renderPlayerBanner(); renderHeroRightExtra(); renderSupporters(); renderNews(); renderAdminAll();
 }
 
 function deleteBanner(id) {
   if (!confirm('Excluir este banner?')) return;
   DATA.banners = DATA.banners.filter(x => x.id !== id);
-  saveData(); renderBannerList(); renderSlideshow(); renderHeroPremium(); renderPlayerBanner(); renderSupporters(); renderNews(); renderAdminAll();
+  saveData(); renderBannerList(); renderSlideshow(); renderHeroPremium(); renderPlayerBanner(); renderHeroRightExtra(); renderSupporters(); renderNews(); renderAdminAll();
   showToast('Excluído', 'success');
 }
 
@@ -2833,7 +2906,7 @@ function loadTV() {
 
 // INIT
 renderSlideshow();
-renderHeroPremium(); renderPlayerBanner();
+renderHeroPremium(); renderPlayerBanner(); renderHeroRightExtra();
 renderTicker();
 renderNewsFilters();
 renderNews();
