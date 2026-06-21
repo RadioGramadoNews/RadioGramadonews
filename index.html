@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rádio Gramado News — Ao Vivo</title>
+<meta name="description" content="A Voz da Serra Gaúcha. Música de qualidade e informação com credibilidade, transmitindo 24 horas por dia.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Rádio Gramado News">
+<meta property="og:title" content="Rádio Gramado News — Ao Vivo">
+<meta property="og:description" content="A Voz da Serra Gaúcha. Música de qualidade e informação com credibilidade, transmitindo 24 horas por dia.">
+<meta property="og:image" content="https://macedo77.com.br/radiogramado/wp-content/uploads/2023/10/logogramadonews.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="https://macedo77.com.br/radiogramado/wp-content/uploads/2024/06/icone-300x300.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -146,6 +153,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; colo
 .nav-mobile-toggle { display:none; }
 
 /* BANNER SLIDESHOW TOPO */
+#home { scroll-margin-top: 0; }
 .hero-slideshow {
   margin-top:92px;
   padding:20px 32px 0;
@@ -236,39 +244,6 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; colo
   gap:24px;
 }
 
-.hero-right-extra {
-  display:block;
-  flex:1;
-  min-height:120px;
-  border-radius:16px;
-  overflow:hidden;
-  background:var(--bg-2);
-  border:1px solid var(--border);
-  transition:all 0.4s;
-  position:relative;
-}
-.hero-right-extra::before {
-  content:'';
-  position:absolute;
-  top:0; left:0; right:0; height:2px;
-  background:linear-gradient(90deg, var(--green), var(--gold));
-  z-index:2;
-}
-.hero-right-extra:hover {
-  border-color:var(--gold);
-  transform:translateY(-3px);
-  box-shadow:0 16px 40px rgba(0,0,0,0.5);
-}
-.hero-right-extra img {
-  width:100%;
-  height:100%;
-  min-height:120px;
-  object-fit:cover;
-  display:block;
-  transition:transform 0.5s;
-}
-.hero-right-extra:hover img { transform:scale(1.05); }
-
 .player-meta-tag {
   display:inline-flex; align-items:center; gap:10px;
   background:rgba(30,122,61,0.15);
@@ -328,41 +303,6 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; colo
   transition:transform 0.5s;
 }
 .hero-banner-premium:hover img { transform:scale(1.03); }
-
-/* Banner extra do lado ESQUERDO embaixo do Tricofest - preenche espaço vago */
-.hero-left-extra {
-  display:block;
-  flex:1;
-  min-height:140px;
-  border-radius:16px;
-  overflow:hidden;
-  background:var(--bg-2);
-  border:1px solid var(--border);
-  transition:all 0.4s;
-  position:relative;
-  margin-top:auto;
-}
-.hero-left-extra::before {
-  content:'';
-  position:absolute;
-  top:0; left:0; right:0; height:2px;
-  background:linear-gradient(90deg, var(--gold), var(--green));
-  z-index:2;
-}
-.hero-left-extra:hover {
-  border-color:var(--gold);
-  transform:translateY(-3px);
-  box-shadow:0 16px 40px rgba(0,0,0,0.5);
-}
-.hero-left-extra img {
-  width:100%;
-  height:100%;
-  min-height:140px;
-  object-fit:cover;
-  display:block;
-  transition:transform 0.5s;
-}
-.hero-left-extra:hover img { transform:scale(1.05); }
 
 /* Lado direito: player controls */
 .player-controls-stage {
@@ -1052,6 +992,122 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; colo
 }
 .news-filter-btn.active .count { background:rgba(0,0,0,0.15); }
 
+/* PÁGINA: TODAS AS NOTÍCIAS (portal) */
+.all-news-page {
+  padding:130px 32px 80px;
+  min-height:100vh;
+}
+.back-btn {
+  display:inline-flex; align-items:center; gap:10px;
+  background:none; border:1px solid var(--border-strong);
+  color:var(--text-2); font-size:13px; font-weight:600;
+  padding:10px 20px; border-radius:50px;
+  margin-bottom:28px;
+  transition:all 0.2s;
+}
+.back-btn:hover { background:var(--gold); color:#000; border-color:var(--gold); }
+/* Versão destacada do botão voltar - usada nas páginas de tela cheia (Ver tudo, Quem Somos) */
+.back-btn-highlight {
+  background:linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+  border:none;
+  color:#0a0a0a;
+  font-size:14px;
+  font-weight:700;
+  padding:13px 26px;
+  box-shadow:0 6px 20px rgba(245,184,0,0.35);
+}
+.back-btn-highlight:hover {
+  background:linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 100%);
+  color:#0a0a0a;
+  transform:translateY(-2px);
+  box-shadow:0 10px 28px rgba(245,184,0,0.5);
+}
+.back-btn-highlight i { font-size:13px; }
+
+/* PÁGINA: QUEM SOMOS (institucional) */
+.about-page {
+  padding:130px 32px 100px;
+  min-height:100vh;
+}
+.about-page-inner {
+  max-width:760px;
+  margin:0 auto;
+}
+.about-page-inner .section-title-main {
+  margin-bottom:36px;
+}
+.about-page-content {
+  font-size:16px;
+  line-height:1.85;
+  color:var(--text-2);
+}
+.about-page-content p {
+  margin-bottom:22px;
+}
+.about-page-content h3 {
+  font-family:'Bebas Neue', sans-serif;
+  font-size:26px;
+  letter-spacing:0.3px;
+  color:var(--text-1);
+  margin:38px 0 16px;
+  position:relative;
+  padding-left:18px;
+}
+.about-page-content h3::before {
+  content:'';
+  position:absolute;
+  left:0; top:6px; bottom:6px;
+  width:4px;
+  border-radius:4px;
+  background:linear-gradient(180deg, var(--green), var(--gold));
+}
+.about-page-content strong { color:var(--gold); font-weight:700; }
+.about-page-content > p:last-child {
+  font-family:'Bebas Neue', sans-serif;
+  font-size:22px;
+  letter-spacing:0.5px;
+  color:var(--gold);
+  margin-top:36px;
+}
+.all-news-list {
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:22px;
+}
+.all-news-card {
+  display:flex; flex-direction:column;
+  border-radius:14px; overflow:hidden;
+  background:var(--bg-1); border:1px solid var(--border);
+  cursor:pointer;
+  transition:all 0.3s;
+}
+.all-news-card:hover { transform:translateY(-4px); border-color:var(--gold); }
+.all-news-card-img { width:100%; aspect-ratio:16/9; overflow:hidden; }
+.all-news-card-img img { width:100%; height:100%; object-fit:cover; transition:transform 0.5s; }
+.all-news-card:hover .all-news-card-img img { transform:scale(1.05); }
+.all-news-card-body { padding:18px; flex:1; display:flex; flex-direction:column; gap:10px; }
+.all-news-card-title {
+  font-family:'Bebas Neue', sans-serif;
+  font-size:19px; line-height:1.1; letter-spacing:0.3px;
+}
+.all-news-card:hover .all-news-card-title { color:var(--gold); }
+.all-news-card-excerpt {
+  font-size:13px; color:var(--text-2);
+  line-height:1.5;
+  display:-webkit-box;
+  -webkit-line-clamp:3;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+.all-news-card-meta {
+  display:flex; gap:14px; margin-top:auto;
+  font-size:11px; color:var(--text-3); font-weight:500;
+}
+.all-news-card-meta span { display:flex; align-items:center; gap:5px; }
+.all-news-empty {
+  grid-column:1/-1; text-align:center; padding:60px 20px; color:var(--text-3);
+}
+
 .news-mosaic {
   display:grid;
   grid-template-columns:repeat(12, 1fr);
@@ -1739,7 +1795,6 @@ footer {
 @media (max-width: 1024px) {
   .hero-inner { grid-template-columns:1fr; gap:40px; }
   .hero-right { gap:18px; }
-  .hero-right-extra { min-height:140px; max-height:240px; }
   .hero-banner-premium { max-width:600px; margin:0 auto; width:100%; }
   .news-mosaic { grid-template-columns:repeat(6, 1fr); }
   .news-card.size-hero { grid-column:span 6; min-height:280px; }
@@ -1752,6 +1807,8 @@ footer {
   .nav-player .nav-player-info { display:none; }
   .tv-card { grid-template-columns:1fr; }
   .tv-title { font-size:30px; }
+  .all-news-list { grid-template-columns:repeat(2, 1fr); }
+  .all-news-page { padding:120px 20px 60px; }
 }
 @media (max-width: 768px) {
   .navbar { padding:8px 14px; }
@@ -1785,6 +1842,7 @@ footer {
     grid-column:span 1; min-height:180px;
   }
   .news-card.size-hero .news-card-title { font-size:20px; }
+  .all-news-list { grid-template-columns:1fr; }
   .section-title-main { font-size:32px; }
   .gerson-card { grid-template-columns:1fr; }
   .gerson-photo-wrap { aspect-ratio:16/9; }
@@ -1811,11 +1869,12 @@ footer {
 
 <!-- NAVBAR -->
 <nav class="navbar" id="navbar">
-  <a href="#home" class="nav-logo">
+  <a href="#home" class="nav-logo" onclick="goHome(event)">
     <img src="https://macedo77.com.br/radiogramado/wp-content/uploads/2023/10/logogramadonews.png" alt="Rádio Gramado News">
   </a>
   <div class="nav-menu" id="navMenu">
-    <a href="#home" class="active">Início</a>
+    <a href="#home" class="active" onclick="goHome(event)">Início</a>
+    <a href="#sobre" id="navAboutLink" onclick="openAboutPage(event)">Quem Somos</a>
     <a href="#tv">TV</a>
     <a href="#noticias">Notícias</a>
     <a href="#blog">Blog do Gerson</a>
@@ -1840,6 +1899,9 @@ footer {
   </div>
 </nav>
 
+<div id="mainSiteContent">
+<!-- HOME: engloba o banner do topo + hero do player, para o botão "Início" não esconder o banner -->
+<div id="home">
 <section class="hero-slideshow">
   <div class="slideshow-wrap" id="slideshowWrap"></div>
   <button class="slide-arrow prev" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></button>
@@ -1848,7 +1910,7 @@ footer {
 </section>
 
 <!-- HERO NOVO - SEM DISCO -->
-<section class="hero" id="home">
+<section class="hero">
   <div class="hero-inner">
     <div class="hero-left">
       <div class="player-meta-tag">Transmissão Online · 24h</div>
@@ -1864,11 +1926,6 @@ footer {
       <!-- Banner premium no lugar do disco (quadrado) -->
       <a href="#" class="hero-banner-premium" id="heroBannerPremium" target="_blank" rel="noopener">
         <img id="heroBannerImg" src="" alt="">
-      </a>
-
-      <!-- Banner extra esquerdo (preenche espaço sobrando) -->
-      <a href="#" target="_blank" rel="noopener" id="heroLeftExtra" class="hero-left-extra" style="display:none;">
-        <img id="heroLeftExtraImg" src="" alt="">
       </a>
     </div>
 
@@ -1909,14 +1966,11 @@ footer {
         <img id="playerBannerImg" src="" alt="">
       </a>
     </div>
-
-    <!-- Banner extra embaixo do card do player (preenche espaço vazio) -->
-    <a href="#" target="_blank" rel="noopener" id="heroRightExtra" class="hero-right-extra" style="display:none;">
-      <img id="heroRightExtraImg" src="" alt="">
-    </a>
   </div>
   </div>
 </section>
+</div>
+<!-- /HOME -->
 
 <div class="ticker-wrap">
   <div class="ticker-label">
@@ -1992,7 +2046,7 @@ footer {
         <div class="section-eyebrow">O QUE ESTÁ ACONTECENDO</div>
         <h2 class="section-title-main">Últimas <span>notícias</span></h2>
       </div>
-      <a href="#" class="section-cta">Ver tudo <i class="fas fa-arrow-right"></i></a>
+      <a href="?todas=1" id="verTudoBtn" class="section-cta" target="_blank" rel="noopener">Ver tudo <i class="fas fa-arrow-right"></i></a>
     </div>
     <div class="news-filters" id="newsFilters"></div>
     <div class="news-mosaic" id="newsMosaic"></div>
@@ -2071,15 +2125,10 @@ footer {
     <div class="footer-brand">
       <img src="https://macedo77.com.br/radiogramado/wp-content/uploads/2023/10/logogramadonews.png" alt="Rádio Gramado News">
       <p>Música de qualidade e informação com credibilidade. A Voz da Serra Gaúcha, transmitindo 24 horas por dia para todo o Brasil e o mundo.</p>
-      <div class="footer-socials">
-        <a href="https://www.facebook.com/profile.php?id=61552205840843" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.instagram.com/radiogramadonews/" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://wa.me/5554999853657" target="_blank"><i class="fab fa-whatsapp"></i></a>
-      </div>
     </div>
     <div class="footer-col">
       <h4>Navegação</h4>
-      <a href="#home">Início</a>
+      <a href="#home" onclick="goHome(event)">Início</a>
       <a href="#tv">TV Gramado News</a>
       <a href="#noticias">Notícias</a>
       <a href="#blog">Blog do Gerson</a>
@@ -2101,6 +2150,11 @@ footer {
           <i class="fab fa-whatsapp"></i> (54) 9.9985-3657
         </a>
       </p>
+      <p style="color:var(--text-2); font-size:13px; font-weight:500; margin-top:8px;">
+        <a href="mailto:gerson@blogdogerson.com.br" style="display:inline-flex; align-items:center; gap:8px; color:var(--text-2);">
+          <i class="far fa-envelope"></i> gerson@blogdogerson.com.br
+        </a>
+      </p>
     </div>
   </div>
   <div class="footer-bottom">
@@ -2113,6 +2167,35 @@ footer {
     </div>
   </div>
 </footer>
+</div>
+<!-- /mainSiteContent -->
+
+<!-- PÁGINA: TODAS AS NOTÍCIAS (portal) -->
+<section class="all-news-page full-page-section" id="allNewsPage" style="display:none;">
+  <div class="container">
+    <button class="back-btn back-btn-highlight" onclick="closeAllNews()"><i class="fas fa-arrow-left"></i> Voltar para a home</button>
+    <div class="section-header">
+      <div>
+        <div class="section-eyebrow">PORTAL DE NOTÍCIAS</div>
+        <h2 class="section-title-main">Todas as <span>notícias</span></h2>
+      </div>
+    </div>
+    <div class="news-filters" id="allNewsFilters"></div>
+    <div class="all-news-list" id="allNewsList"></div>
+  </div>
+</section>
+
+<!-- PÁGINA: QUEM SOMOS (institucional, texto editável pelo admin) -->
+<section class="about-page full-page-section" id="aboutPage" style="display:none;">
+  <div class="container">
+    <button class="back-btn back-btn-highlight" onclick="closeAboutPage()"><i class="fas fa-arrow-left"></i> Voltar para a home</button>
+    <div class="about-page-inner">
+      <div class="section-eyebrow">INSTITUCIONAL</div>
+      <h2 class="section-title-main" id="aboutPageTitle">Quem <span>Somos</span></h2>
+      <div class="about-page-content" id="aboutPageContent"></div>
+    </div>
+  </div>
+</section>
 
 <!-- MODAL DE LEITURA DE NOTÍCIAS -->
 <div class="news-modal" id="newsModal">
@@ -2133,7 +2216,6 @@ footer {
         <span><i class="far fa-calendar"></i> <span id="newsModalDate"></span></span>
         <span><i class="far fa-eye"></i> <span id="newsModalViews"></span> visualizações</span>
       </div>
-      <div class="news-modal-excerpt" id="newsModalExcerpt"></div>
       <div class="news-modal-content" id="newsModalContent"></div>
       <div class="news-modal-share">
         <span>Compartilhar:</span>
@@ -2310,8 +2392,6 @@ footer {
                     <option value="slideshow">🎬 Slideshow topo (rotativo) — 1024×150</option>
                     <option value="hero-premium">🌟 Hero (no lugar do disco) — 400×400 quadrado</option>
                     <option value="player-bottom">🎵 Embaixo do player — 1024×150 horizontal</option>
-                    <option value="hero-left-extra">⬅️ Lateral esquerda (embaixo do banner premium)</option>
-                    <option value="hero-right-extra">📺 Lateral direita do player — qualquer formato</option>
                     <option value="solo">📐 Banner solo (horizontal isolado) — 1024×150</option>
                     <option value="news-inline">📰 Inline nas notícias (300×300)</option>
                     <option value="supporters">⬜ Apoiador (rodapé) — 300×300</option>
@@ -2390,6 +2470,19 @@ footer {
               </div>
             </div>
             <button class="btn btn-success" onclick="saveSettings()"><i class="fas fa-save"></i> Salvar</button>
+          </div>
+          <div class="form-card">
+            <h4>Página "Quem Somos"</h4>
+            <p class="page-desc">Edite o nome que aparece no menu e o texto completo da página institucional.</p>
+            <div class="form-group">
+              <label>Nome da aba (menu)</label>
+              <input type="text" id="cfgAboutTabName" value="Quem Somos" placeholder="Ex: Quem Somos">
+            </div>
+            <div class="form-group">
+              <label>Texto da página</label>
+              <textarea id="cfgAboutText" rows="16" placeholder="Escreva o texto institucional aqui. Use uma linha em branco para separar parágrafos. Linhas curtas terminadas sem ponto final são tratadas como subtítulos."></textarea>
+            </div>
+            <button class="btn btn-success" onclick="saveAboutSettings()"><i class="fas fa-save"></i> Salvar página Quem Somos</button>
           </div>
           <div class="form-card">
             <h4>Segurança</h4>
@@ -2485,7 +2578,9 @@ async function loadFromSupabase() {
         whatsapp: settingsObj.whatsapp || '5554999853657',
         facebook: settingsObj.facebook || 'https://www.facebook.com/profile.php?id=61552205840843',
         instagram: settingsObj.instagram || 'https://www.instagram.com/radiogramadonews/',
-        address: settingsObj.address || 'Rua F. G. Bier, 1185 Sala 01 – Bairro Planalto, Gramado – RS'
+        address: settingsObj.address || 'Rua F. G. Bier, 1185 Sala 01 – Bairro Planalto, Gramado – RS',
+        aboutTabName: settingsObj.aboutTabName || DEFAULT_DATA.settings.aboutTabName,
+        aboutText: settingsObj.aboutText || DEFAULT_DATA.settings.aboutText
       }
     };
     
@@ -2587,10 +2682,6 @@ const DEFAULT_DATA = {
     {id:3, name:"Tricofest Hero", position:"hero-premium", image:IMGS.tricofest_quadrado, link:"https://www.tricofest.com.br/", active:1, order:1},
     // Banner inline do PLAYER (embaixo do volume, onde tirou as redes sociais)
     {id:10, name:"Sicredi Player", position:"player-bottom", image:IMGS.sicredi_horizontal, link:"https://sicredipioneira.com.br", active:1, order:1},
-    // Banner extra na coluna direita do hero (preenche espaço embaixo do player)
-    {id:11, name:"Câmara de Gramado Extra", position:"hero-right-extra", image:IMGS.camara_300x250, link:"https://www.instagram.com/camaragramado/", active:1, order:1},
-    // Banner extra na coluna esquerda do hero (preenche espaço embaixo do Tricofest)
-    {id:12, name:"Fermenta Extra", position:"hero-left-extra", image:IMGS.fermenta, link:"https://www.instagram.com/fermen.ta/", active:1, order:1},
     // Banner SOLO horizontal (embaixo do ÚLTIMA HORA)
     {id:13, name:"Sicredi Solo", position:"solo", image:IMGS.sicredi_horizontal, link:"https://sicredipioneira.com.br", active:1, order:1},
     // Inline notícias
@@ -2607,7 +2698,45 @@ const DEFAULT_DATA = {
     whatsapp: "5554999853657",
     facebook: "https://www.facebook.com/profile.php?id=61552205840843",
     instagram: "https://www.instagram.com/radiogramadonews/",
-    address: "Rua F. G. Bier, 1185 Sala 01 – Bairro Planalto, Gramado – RS – CEP 95.675-158"
+    address: "Rua F. G. Bier, 1185 Sala 01 – Bairro Planalto, Gramado – RS – CEP 95.675-158",
+    aboutTabName: "Quem Somos",
+    aboutText: `A Serra Gaúcha tem um som. E ela tem nome.
+
+Entre o verde das araucárias e o ritmo de uma região que nunca para de receber gente de todo canto do mundo, nasceu a Rádio Gramado News, não como mais uma frequência on-line, mas como um compromisso: o de contar, a história de um lugar que é, ao mesmo tempo, destino turístico e casa de quem trabalha, mora e constrói essa terra todos os dias.
+
+Somos uma rádio 100% digital, transmitindo 24 horas por dia. E, através da internet, para qualquer lugar do Brasil e do mundo onde exista alguém com vontade de ouvir uma boa música, saber o que está acontecendo aqui ou simplesmente para quem estiver longe matar a saudade de casa.
+
+Música e informação, sem pausa para vírgula
+
+Acreditamos numa ideia simples, mas rara: rádio é companhia. É a voz que acompanha o cliente do hotel se arrumando para o passeio do dia, o motorista no trânsito da borges de medeiros, o comerciante abrindo a loja na praça central, o produtor rural na lida do amanhecer. Por isso, nossa programação foi pensada para estar presente em cada um desses momentos, com música de qualidade, jornalismo apurado e uma cobertura local que ninguém mais faz com a mesma intimidade.
+
+Não escolhemos entre entretenimento e jornalismo. Entregamos os dois, lado a lado, porque sabemos que informação confiável também é uma forma de cuidar de quem nos ouve.
+
+Raiz local, alcance global
+
+A Serra Gaúcha vive de duas forças que parecem opostas e são, na verdade, complementares: a tradição de quem nasceu e cresceu aqui, e a efervescência de quem chega todos os dias para visitar, investir ou recomeçar. A Rádio Gramado News nasceu exatamente nesse cruzamento.
+
+Cobrimos o que importa para quem mora — política municipal, segurança, economia, eventos comunitários — e também o que importa para quem visita: turismo, gastronomia, agenda cultural, novidades do setor de eventos e hotelaria. Em uma única transmissão, conectamos o cidadão e o visitante, o morador e o turista, a notícia e a trilha sonora de um dos destinos mais procurados do Brasil.
+
+Mais do que rádio: um portal de notícias vivo
+
+Quem acompanha a Rádio Gramado News não ouve apenas — também lê, assiste e participa. Nosso portal de notícias é atualizado o tempo todo, nossa TV Gramado News leva a cobertura para o vídeo, e a parceria com o Blog do Gerson, do jornalista Gerson Sorgetz, amplia ainda mais o alcance da nossa informação, sempre pautada por apuração e compromisso com a verdade.
+
+Não somos um veículo que apenas distribui conteúdo. Somos um ponto de encontro entre quem informa e quem precisa estar informado — em áudio, em texto e em imagem.
+
+Confiança é construída, não anunciada
+
+Em um cenário onde a informação se multiplica mais rápido do que se verifica, escolhemos o caminho mais trabalhoso: o da credibilidade. Cada notícia publicada, cada entrevista ao vivo, cada boletim no ar carrega o mesmo compromisso que nos trouxe até aqui, falar a verdade, ouvir os dois lados, e tratar quem nos ouve com o respeito que a informação de qualidade exige.
+
+É por isso que marcas, instituições e o poder público de Gramado e região confiam na Rádio Gramado News para comunicar o que realmente importa.
+
+A Voz da Serra Gaúcha é, também, a sua voz
+
+Se você é morador, temos a notícia que importa para a sua cidade. Se você é visitante, temos a trilha sonora e as dicas que tornam sua estadia ainda melhor. Se você é empresário, temos o alcance que coloca sua marca onde a atenção da Serra Gaúcha realmente está.
+
+A Rádio Gramado News é, antes de tudo, um lugar de encontro, entre frequências, entre pessoas, entre o que a Serra Gaúcha foi, é e está se tornando.
+
+Sintonize. Acompanhe. Faça parte.`
   },
   auth: { user: "admin", pass: "gramado2026" }
 };
@@ -2728,40 +2857,6 @@ function renderPlayerBanner() {
   img.alt = b.name;
 }
 
-// HERO RIGHT EXTRA - banner embaixo do card do player
-function renderHeroRightExtra() {
-  const list = DATA.banners.filter(b => b.position === 'hero-right-extra' && b.active == 1).sort((a,b) => a.order - b.order);
-  const wrap = document.getElementById('heroRightExtra');
-  const img = document.getElementById('heroRightExtraImg');
-  if (!wrap || !img) return;
-  if (!list.length) {
-    wrap.style.display = 'none';
-    return;
-  }
-  wrap.style.display = 'block';
-  const b = list[0];
-  wrap.href = b.link;
-  img.src = b.image;
-  img.alt = b.name;
-}
-
-// HERO LEFT EXTRA - banner extra embaixo do banner Tricofest (lado esquerdo)
-function renderHeroLeftExtra() {
-  const list = DATA.banners.filter(b => b.position === 'hero-left-extra' && b.active == 1).sort((a,b) => a.order - b.order);
-  const wrap = document.getElementById('heroLeftExtra');
-  const img = document.getElementById('heroLeftExtraImg');
-  if (!wrap || !img) return;
-  if (!list.length) {
-    wrap.style.display = 'none';
-    return;
-  }
-  wrap.style.display = 'block';
-  const b = list[0];
-  wrap.href = b.link;
-  img.src = b.image;
-  img.alt = b.name;
-}
-
 // BANNER SOLO - embaixo do ticker ÚLTIMA HORA
 function renderBannerSolo() {
   const list = DATA.banners.filter(b => b.position === 'solo' && b.active == 1).sort((a,b) => a.order - b.order);
@@ -2821,9 +2916,19 @@ setInterval(() => {
     b.style.height = isPlaying ? (Math.random() * 90 + 10) + '%' : '15%';
   });
 }, 120);
-setInterval(() => {
-  if (isPlaying) document.getElementById('listenersCount').textContent = (120 + Math.floor(Math.random()*40)) + ' ouvindo';
-}, 5000);
+// Contador de ouvintes - varia de forma gradual e orgânica, sem saltos bruscos
+// Começa em 128 e sobe/desce pouco a pouco, dentro de uma faixa natural
+let currentListeners = 128;
+const LISTENERS_MIN = 95;
+const LISTENERS_MAX = 210;
+function updateListenersCount() {
+  if (!isPlaying) return;
+  // Passo pequeno e aleatório (-4 a +5), simulando entradas/saídas naturais de ouvintes
+  const step = Math.floor(Math.random() * 10) - 4;
+  currentListeners = Math.max(LISTENERS_MIN, Math.min(LISTENERS_MAX, currentListeners + step));
+  document.getElementById('listenersCount').textContent = currentListeners + ' ouvindo';
+}
+setInterval(updateListenersCount, 6000 + Math.floor(Math.random() * 3000));
 
 window.addEventListener('scroll', () => {
   const nav = document.getElementById('navbar');
@@ -2912,10 +3017,183 @@ function renderNews() {
   document.getElementById('newsMosaic').innerHTML = html;
 }
 
+// ============================================================
+// PÁGINA "VER TUDO" - lista completa de notícias (portal, abre em nova aba)
+// ============================================================
+let allNewsFilter = 'all';
+
+function showAllNewsPage() {
+  document.getElementById('mainSiteContent').style.display = 'none';
+  document.getElementById('allNewsPage').style.display = 'block';
+  allNewsFilter = 'all';
+  renderAllNewsFilters();
+  renderAllNewsList();
+  document.title = 'Todas as notícias — Rádio Gramado News';
+  window.scrollTo(0, 0);
+}
+
+function closeAllNews() {
+  document.getElementById('allNewsPage').style.display = 'none';
+  document.getElementById('mainSiteContent').style.display = '';
+  history.pushState({}, 'Rádio Gramado News — Ao Vivo', window.location.pathname);
+  document.title = 'Rádio Gramado News — Ao Vivo';
+}
+
+// ============================================================
+// PÁGINA "QUEM SOMOS" - institucional, texto editável pelo admin
+// ============================================================
+function openAboutPage(e, silent) {
+  if (e) e.preventDefault();
+  document.getElementById('mainSiteContent').style.display = 'none';
+  document.getElementById('allNewsPage').style.display = 'none';
+  document.getElementById('aboutPage').style.display = 'block';
+  renderAboutPage();
+  const tabName = (DATA.settings && DATA.settings.aboutTabName) || 'Quem Somos';
+  document.title = `${tabName} — Rádio Gramado News`;
+  if (!silent) {
+    const url = new URL(window.location.href);
+    url.search = '';
+    url.hash = '';
+    url.searchParams.set('sobre', '1');
+    history.pushState({ about: true }, document.title, url.toString());
+  }
+  window.scrollTo(0, 0);
+}
+
+function closeAboutPage() {
+  document.getElementById('aboutPage').style.display = 'none';
+  document.getElementById('mainSiteContent').style.display = '';
+  history.pushState({}, 'Rádio Gramado News — Ao Vivo', window.location.pathname);
+  document.title = 'Rádio Gramado News — Ao Vivo';
+}
+
+// Renderiza o título da aba (menu) e o conteúdo da página, a partir das configurações
+function renderAboutPage() {
+  const tabName = (DATA.settings && DATA.settings.aboutTabName) || 'Quem Somos';
+  const rawText = (DATA.settings && DATA.settings.aboutText) || '';
+  const navLink = document.getElementById('navAboutLink');
+  if (navLink) navLink.textContent = tabName;
+  const titleEl = document.getElementById('aboutPageTitle');
+  if (titleEl) {
+    const words = tabName.trim().split(' ');
+    const last = words.pop() || '';
+    titleEl.innerHTML = (words.length ? words.join(' ') + ' ' : '') + `<span>${last}</span>`;
+  }
+  document.getElementById('aboutPageContent').innerHTML = formatAboutText(rawText);
+}
+
+// Converte o texto plano cadastrado no admin em HTML formatado:
+// - linha em branco separa parágrafos
+// - uma linha curta isolada (sem ponto final, sem ser a primeira) é tratada como subtítulo
+function formatAboutText(text) {
+  if (!text || !text.trim()) {
+    return '<p style="color:var(--text-3); font-style:italic;">Texto institucional em breve.</p>';
+  }
+  const blocks = text.split(/\n\s*\n/).map(b => b.trim()).filter(Boolean);
+  return blocks.map((block, i) => {
+    const isShortTitle = block.length < 70 && !block.includes('\n') && !/[.!?]$/.test(block) && i > 0;
+    if (isShortTitle) return `<h3>${escapeHtml(block)}</h3>`;
+    const paragraphs = block.split('\n').map(l => l.trim()).filter(Boolean);
+    return paragraphs.map(p => `<p>${escapeHtml(p)}</p>`).join('');
+  }).join('');
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+async function saveAboutSettings() {
+  if (!currentUser) { showToast('Faça login primeiro', 'error'); return; }
+  const tabName = document.getElementById('cfgAboutTabName').value.trim() || 'Quem Somos';
+  const text = document.getElementById('cfgAboutText').value;
+  try {
+    const { error: e1 } = await sb.from('settings').upsert({ key: 'aboutTabName', value: tabName });
+    if (e1) throw e1;
+    const { error: e2 } = await sb.from('settings').upsert({ key: 'aboutText', value: text });
+    if (e2) throw e2;
+    showToast('Página Quem Somos salva!', 'success');
+    await refreshDataAndRender();
+  } catch (e) {
+    showToast('Erro: ' + e.message, 'error');
+  }
+}
+
+// Garante que o botão "Início" sempre volta para o topo da home, de qualquer estado da página
+function goHome(e) {
+  if (e) e.preventDefault();
+  // Fecha o modal de notícia, se estiver aberto
+  const modal = document.getElementById('newsModal');
+  if (modal && modal.classList.contains('show')) {
+    modal.classList.remove('show');
+    document.body.style.overflow = '';
+  }
+  // Fecha qualquer página de aba (ex: Quem Somos, Todas as notícias), se estiver aberta
+  document.querySelectorAll('.full-page-section').forEach(el => el.style.display = 'none');
+  const allNews = document.getElementById('allNewsPage');
+  if (allNews) allNews.style.display = 'none';
+  // Mostra o conteúdo principal da home
+  document.getElementById('mainSiteContent').style.display = '';
+  // Restaura URL e título
+  if (window.location.search || window.location.hash) {
+    history.pushState({}, 'Rádio Gramado News — Ao Vivo', window.location.pathname);
+  }
+  document.title = 'Rádio Gramado News — Ao Vivo';
+  // Vai para o topo instantaneamente (sem scroll suave, pra não dar sensação de demora)
+  window.scrollTo({ top: 0, behavior: 'auto' });
+  document.querySelectorAll('.nav-menu a').forEach(x => x.classList.remove('active'));
+  const homeLink = document.querySelector('.nav-menu a[href="#home"]');
+  if (homeLink) homeLink.classList.add('active');
+}
+
+function renderAllNewsFilters() {
+  const pub = DATA.news.filter(n => n.status === 'published');
+  const cats = DATA.categories.map(c => ({name:c, count: pub.filter(n => n.category === c).length}));
+  let html = `<button class="news-filter-btn ${allNewsFilter === 'all' ? 'active' : ''}" onclick="filterAllNews('all')">Todas <span class="count">${pub.length}</span></button>`;
+  html += cats.map(c => `
+    <button class="news-filter-btn ${allNewsFilter === c.name ? 'active' : ''}" onclick="filterAllNews('${c.name.replace(/'/g, "\\'")}')">${c.name} <span class="count">${c.count}</span></button>
+  `).join('');
+  document.getElementById('allNewsFilters').innerHTML = html;
+}
+
+function filterAllNews(cat) {
+  allNewsFilter = cat;
+  renderAllNewsFilters();
+  renderAllNewsList();
+}
+
+function renderAllNewsList() {
+  let pub = DATA.news.filter(n => n.status === 'published');
+  if (allNewsFilter !== 'all') pub = pub.filter(n => n.category === allNewsFilter);
+  const list = document.getElementById('allNewsList');
+  if (pub.length === 0) {
+    list.innerHTML = '<div class="all-news-empty"><i class="fas fa-newspaper" style="font-size:42px; opacity:0.3; margin-bottom:12px;"></i><p>Nenhuma notícia nesta editoria</p></div>';
+    return;
+  }
+  list.innerHTML = pub.map(n => `
+    <div class="all-news-card" onclick="openNews(${n.id})">
+      <div class="all-news-card-img"><img src="${n.image}" alt="${n.title}" loading="lazy"></div>
+      <div class="all-news-card-body">
+        <span class="news-cat ${getCatClass(n.category)}">${n.category}</span>
+        <h3 class="all-news-card-title">${n.title}</h3>
+        <p class="all-news-card-excerpt">${n.excerpt || ''}</p>
+        <div class="all-news-card-meta">
+          <span><i class="far fa-calendar"></i> ${n.date}</span>
+          <span><i class="far fa-eye"></i> ${n.views || 0}</span>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
 function openNews(id) {
   const n = DATA.news.find(x => x.id == id);
   if (!n) return;
-  
+
+  // Lembra se a notícia foi aberta a partir da página "todas as notícias"
+  window._cameFromAllNews = document.getElementById('allNewsPage').style.display === 'block';
+
   // Preenche o modal
   document.getElementById('newsModalImg').src = n.image;
   document.getElementById('newsModalImg').alt = n.title;
@@ -2925,8 +3203,7 @@ function openNews(id) {
   document.getElementById('newsModalAuthor').textContent = n.author || 'Redação';
   document.getElementById('newsModalDate').textContent = n.date || '';
   document.getElementById('newsModalViews').textContent = n.views || 0;
-  document.getElementById('newsModalExcerpt').textContent = n.excerpt || '';
-  
+
   // Conteúdo - se vazio, mostra mensagem
   const contentEl = document.getElementById('newsModalContent');
   if (n.content && n.content.trim()) {
@@ -2934,18 +3211,25 @@ function openNews(id) {
   } else {
     contentEl.innerHTML = `<p style="color:var(--text-3); font-style:italic;">Conteúdo completo desta matéria em breve. Acompanhe o blog do Gerson para mais informações: <a href="https://blogdogerson.com.br" target="_blank">blogdogerson.com.br</a></p>`;
   }
-  
-  // Compartilhamento
+
+  // URL própria da notícia (compartilhável) - atualiza endereço sem recarregar a página
+  const newsUrl = buildNewsUrl(n);
+  if (window.location.href !== newsUrl) {
+    history.pushState({ newsId: n.id }, n.title, newsUrl);
+  }
+  document.title = `${n.title} — Rádio Gramado News`;
+
+  // Compartilhamento - usa a URL específica da notícia
   const shareText = encodeURIComponent(`${n.title} - Rádio Gramado News`);
-  const siteUrl = encodeURIComponent(window.location.href);
-  document.getElementById('newsShareWhatsapp').href = `https://wa.me/?text=${shareText}%20${siteUrl}`;
-  document.getElementById('newsShareFacebook').href = `https://www.facebook.com/sharer/sharer.php?u=${siteUrl}`;
-  
+  const shareUrl = encodeURIComponent(newsUrl);
+  document.getElementById('newsShareWhatsapp').href = `https://wa.me/?text=${shareText}%20${shareUrl}`;
+  document.getElementById('newsShareFacebook').href = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`;
+
   // Abre o modal
   document.getElementById('newsModal').classList.add('show');
   document.body.style.overflow = 'hidden';
   document.getElementById('newsModal').scrollTo(0, 0);
-  
+
   // Incrementa contador de visualizações no Supabase (fire-and-forget)
   if (typeof id === 'number' && id > 0) {
     sb.from('news').update({ views: (n.views || 0) + 1 }).eq('id', id).then(() => {
@@ -2955,9 +3239,32 @@ function openNews(id) {
   }
 }
 
-function closeNewsModal() {
+// Monta a URL própria e compartilhável de uma notícia
+function buildNewsUrl(n) {
+  const url = new URL(window.location.href);
+  url.search = '';
+  url.hash = '';
+  url.searchParams.set('noticia', n.id);
+  return url.toString();
+}
+
+function closeNewsModal(silent) {
   document.getElementById('newsModal').classList.remove('show');
   document.body.style.overflow = '';
+  if (silent) return;
+  // Se veio da página de todas as notícias, volta pra lá; senão, volta pra home
+  if (window._cameFromAllNews) {
+    const url = new URL(window.location.href);
+    url.search = '';
+    url.searchParams.set('todas', '1');
+    history.pushState({}, 'Todas as notícias — Rádio Gramado News', url.toString());
+    document.title = 'Todas as notícias — Rádio Gramado News';
+  } else {
+    if (new URL(window.location.href).searchParams.has('noticia')) {
+      history.pushState({}, 'Rádio Gramado News — Ao Vivo', window.location.pathname);
+    }
+    document.title = 'Rádio Gramado News — Ao Vivo';
+  }
 }
 
 function copyNewsLink() {
@@ -3144,6 +3451,11 @@ function renderAdminAll() {
   document.getElementById('statBanners').textContent = DATA.banners.filter(b => b.active == 1).length;
   populateNewsCategorySelect();
   renderNewsList(); renderBannerList(); renderCategoryList();
+  // Preenche os campos da página "Quem Somos" com os valores atuais salvos
+  const tabInput = document.getElementById('cfgAboutTabName');
+  const textInput = document.getElementById('cfgAboutText');
+  if (tabInput) tabInput.value = (DATA.settings && DATA.settings.aboutTabName) || 'Quem Somos';
+  if (textInput) textInput.value = (DATA.settings && DATA.settings.aboutText) || '';
 }
 
 function populateNewsCategorySelect() {
@@ -3273,8 +3585,6 @@ function renderBannerList() {
     slideshow:'🎬 Slideshow topo',
     'hero-premium':'🌟 Hero Premium',
     'player-bottom':'🎵 Embaixo do player',
-    'hero-left-extra':'⬅️ Lateral esquerda',
-    'hero-right-extra':'📺 Lateral direita',
     solo:'📐 Banner solo',
     'news-inline':'📰 Inline notícias',
     supporters:'⬜ Apoiador'
@@ -3519,13 +3829,15 @@ async function refreshDataAndRender() {
     renderSlideshow();
     renderHeroPremium();
     renderPlayerBanner();
-    renderHeroRightExtra();
-    renderHeroLeftExtra();
     renderBannerSolo();
     renderSupporters();
     renderTicker();
     renderNewsFilters();
     renderNews();
+    // Atualiza o nome da aba no menu sempre, e o conteúdo da página se estiver aberta
+    const navLink = document.getElementById('navAboutLink');
+    if (navLink) navLink.textContent = (DATA.settings && DATA.settings.aboutTabName) || 'Quem Somos';
+    if (document.getElementById('aboutPage').style.display === 'block') renderAboutPage();
     if (currentUser) renderAdminAll();
   }
 }
@@ -3630,19 +3942,73 @@ function loadTV() {
 
 // INIT
 renderSlideshow();
-renderHeroPremium(); renderPlayerBanner(); renderHeroRightExtra(); renderHeroLeftExtra(); renderBannerSolo();
+renderHeroPremium(); renderPlayerBanner(); renderBannerSolo();
 renderTicker();
 renderNewsFilters();
 renderNews();
 renderSupporters();
+// Nome da aba "Quem Somos" no menu, já com o valor padrão/cache antes do Supabase responder
+(function initAboutTabName() {
+  const navLink = document.getElementById('navAboutLink');
+  if (navLink) navLink.textContent = (DATA.settings && DATA.settings.aboutTabName) || 'Quem Somos';
+})();
 
 // Busca notícias do Blog do Gerson (feed RSS)
 fetchGersonNews();
 // Re-busca a cada 30 minutos pra manter atualizado
 setInterval(fetchGersonNews, 30 * 60 * 1000);
 
-// Carrega dados frescos do Supabase em background
-bootSupabase();
+// ============================================================
+// ROTEAMENTO - abre notícia ou listagem completa direto pela URL
+// ============================================================
+function handleRoute() {
+  const params = new URLSearchParams(window.location.search);
+  const noticiaId = params.get('noticia');
+  const todas = params.get('todas');
+  const sobre = params.get('sobre');
+  if (todas) {
+    showAllNewsPage();
+  } else if (sobre) {
+    openAboutPage(null, true);
+  } else if (noticiaId) {
+    const n = DATA.news.find(x => x.id == noticiaId);
+    if (n) {
+      openNews(n.id);
+    } else {
+      showToast('Notícia não encontrada', 'error');
+    }
+  }
+}
+
+// Trata o botão voltar/avançar do navegador (dentro da mesma aba)
+window.addEventListener('popstate', () => {
+  const params = new URLSearchParams(window.location.search);
+  const noticiaId = params.get('noticia');
+  const todas = params.get('todas');
+  const sobre = params.get('sobre');
+  if (noticiaId) {
+    const n = DATA.news.find(x => x.id == noticiaId);
+    if (n) {
+      openNews(n.id);
+      return;
+    }
+  }
+  closeNewsModal(true);
+  if (todas) {
+    showAllNewsPage();
+  } else if (sobre) {
+    document.getElementById('allNewsPage').style.display = 'none';
+    openAboutPage(null, true);
+  } else {
+    document.getElementById('allNewsPage').style.display = 'none';
+    document.getElementById('aboutPage').style.display = 'none';
+    document.getElementById('mainSiteContent').style.display = '';
+    document.title = 'Rádio Gramado News — Ao Vivo';
+  }
+});
+
+// Carrega dados frescos do Supabase em background, então resolve a rota da URL atual
+bootSupabase().then(handleRoute);
 </script>
 </body>
 </html>
